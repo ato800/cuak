@@ -1,0 +1,433 @@
+          :root {  
+                --primary: #8ce866;  
+                --secondary: #42e871;  
+                --text: #333;  
+                --background: rgba(255, 255, 255, 0.85);  
+                --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);  
+                --hover-shadow: 0 15px 30px rgba(138, 43, 226, 0.2);  
+                --font-primary: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;  
+            }  * {  
+            margin: 0;  
+            padding: 0;  
+            box-sizing: border-box;  
+        }  
+
+        body {  
+            font-family: var(--font-primary);  
+            color: var(--text);  
+            background-image: url("https://source.unsplash.com/1080x1920/?nature,sky");  
+            background-size: cover;  
+            background-position: center;  
+            background-attachment: fixed;  
+            min-height: 100vh;  
+            display: flex;  
+            justify-content: center;  
+            align-items: center;  
+            padding: 20px;  
+            position: relative;  
+            overflow-x: hidden;  
+        }  
+
+        body::before {  
+            content: "";  
+            position: fixed;  
+            top: 0;  
+            left: 0;  
+            width: 100%;  
+            height: 100%;  
+            background: url("https://img12.pixhost.to/images/788/574302225_skyzopedia.jpg");
+            );  
+            z-index: -1;  
+        }  
+
+        .container {  
+            width: 100%;  
+            max-width: 500px;  
+            background: var(--background);  
+            backdrop-filter: blur(10px);  
+            -webkit-backdrop-filter: blur(10px);  
+            border-radius: 20px;  
+            padding: 30px;  
+            box-shadow: var(--shadow);  
+            transform: translateY(0);  
+            transition:  
+                transform 0.3s ease,  
+                box-shadow 0.3s ease;  
+            position: relative;  
+            overflow: hidden;  
+            z-index: 1;  
+        }  
+
+        .container::before {  
+            content: "";  
+            position: absolute;  
+            top: -50%;  
+            left: -50%;  
+            width: 200%;  
+            height: 200%;  
+            background: radial-gradient(  
+                circle,  
+                rgba(255, 255, 255, 0.1) 0%,  
+                rgba(255, 255, 255, 0) 70%  
+            );  
+            z-index: -1;  
+            opacity: 0;  
+            transition: opacity 0.5s ease;  
+        }  
+
+        .container:hover::before {  
+            opacity: 1;  
+        }  
+
+        .profile {  
+            display: flex;  
+            flex-direction: column;  
+            align-items: center;  
+            margin-bottom: 25px;  
+            position: relative;  
+        }  
+
+        .profile-img {  
+            width: 120px;  
+            height: 120px;  
+            border-radius: 50%;  
+            object-fit: cover;  
+            border: 4px solid white;  
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);  
+            transition:  
+                transform 0.3s ease,  
+                box-shadow 0.3s ease;  
+            position: relative;  
+            z-index: 2;  
+            background-color: #000;  
+        }  
+
+        .profile-img:hover {  
+            transform: scale(1.05);  
+            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.3);  
+        }  
+
+        .profile-name {  
+            font-size: 28px;  
+            font-weight: 700;  
+            margin: 15px 0 5px;  
+            background: linear-gradient(  
+                to right,  
+                var(--primary),  
+                var(--secondary)  
+            );  
+            -webkit-background-clip: text;  
+            background-clip: text;  
+            color: transparent;  
+            position: relative;  
+            display: inline-block;  
+        }  
+
+        .profile-name::after {  
+            content: "";  
+            position: absolute;  
+            bottom: -5px;  
+            left: 50%;  
+            transform: translateX(-50%);  
+            width: 0;  
+            height: 3px;  
+            background: linear-gradient(  
+                to right,  
+                var(--primary),  
+                var(--secondary)  
+            );  
+            transition: width 0.3s ease;  
+        }  
+
+        .profile-name:hover::after {  
+            width: 100%;  
+        }  
+
+        .verified-badge {  
+            display: inline-flex;  
+            align-items: center;  
+            justify-content: center;  
+            margin-left: 5px;  
+            color: #1da1f2;  
+            font-size: 20px;  
+            vertical-align: middle;  
+        }  
+
+        .profile-desc {  
+            text-align: center;  
+            margin-bottom: 10px;  
+            font-size: 16px;  
+            color: #6a6a6a;  
+            max-width: 80%;  
+            line-height: 1.4;  
+        }  
+
+        .links {  
+            display: flex;  
+            flex-direction: column;  
+            gap: 15px;  
+        }  
+
+        .link {  
+            display: flex;  
+            align-items: center;  
+            padding: 15px 20px;  
+            background: white;  
+            border-radius: 12px;  
+            text-decoration: none;  
+            color: var(--text);  
+            font-weight: 500;  
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);  
+            transition: all 0.3s ease;  
+            position: relative;  
+            overflow: hidden;  
+            z-index: 1;  
+        }  
+
+        .link::before {  
+            content: "";  
+            position: absolute;  
+            top: 0;  
+            left: 0;  
+            width: 100%;  
+            height: 100%;  
+            background: linear-gradient(  
+                135deg,  
+                var(--primary),  
+                var(--secondary)  
+            );  
+            z-index: -1;  
+            transform: translateX(-100%);  
+            transition: transform 0.5s ease;  
+        }  
+
+        .link:hover {  
+            color: white;  
+            transform: translateY(-5px);  
+            box-shadow: var(--hover-shadow);  
+        }  
+
+        .link:hover::before {  
+            transform: translateX(0);  
+        }  
+
+        .link i {  
+            font-size: 22px;  
+            margin-right: 15px;  
+            transition: transform 0.3s ease;  
+            min-width: 25px;  
+            text-align: center;  
+        }  
+
+        .link:hover i {  
+            transform: scale(1.2);  
+        }  
+
+        .link span {  
+            font-size: 16px;  
+            transition: transform 0.3s ease;  
+        }  
+
+        .link:hover span {  
+            transform: translateX(5px);  
+        }  
+
+        .location {  
+            display: flex;  
+            align-items: center;  
+            justify-content: center;  
+            margin-top: 25px;  
+            color: #666;  
+            font-size: 14px;  
+        }  
+
+        .location i {  
+            margin-right: 5px;  
+            color: var(--primary);  
+        }  
+
+        .social-icons {  
+            display: flex;  
+            justify-content: center;  
+            margin-top: 20px;  
+            gap: 15px;  
+        }  
+
+        .social-icon {  
+            display: flex;  
+            align-items: center;  
+            justify-content: center;  
+            width: 40px;  
+            height: 40px;  
+            border-radius: 50%;  
+            background: white;  
+            color: var(--primary);  
+            font-size: 18px;  
+            transition: all 0.3s ease;  
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);  
+            text-decoration: none;  
+        }  
+
+        .social-icon:hover {  
+            transform: translateY(-5px);  
+            color: white;  
+            background: linear-gradient(  
+                135deg,  
+                var(--primary),  
+                var(--secondary)  
+            );  
+            box-shadow: 0 8px 15px rgba(138, 43, 226, 0.2);  
+        }  
+
+        .wave {  
+            position: absolute;  
+            bottom: 0;  
+            left: 0;  
+            width: 100%;  
+            height: 15vh;  
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255, 255, 255, 0.2)" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,202.7C672,203,768,181,864,186.7C960,192,1056,224,1152,229.3C1248,235,1344,213,1392,202.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');  
+            background-size: cover;  
+            background-repeat: no-repeat;  
+            z-index: -2;  
+        }  
+
+        .footer {  
+            margin-top: 25px;  
+            text-align: center;  
+            font-size: 12px;  
+            color: #777;  
+        }  
+
+        @media (max-width: 480px) {  
+            .container {  
+                padding: 25px 20px;  
+            }  
+
+            .profile-img {  
+                width: 100px;  
+                height: 100px;  
+            }  
+
+            .profile-name {  
+                font-size: 24px;  
+            }  
+
+            .profile-desc {  
+                font-size: 14px;  
+                max-width: 95%;  
+            }  
+        }  
+
+        /* Floating particles animation */  
+        .particles {  
+            position: fixed;  
+            top: 0;  
+            left: 0;  
+            width: 100%;  
+            height: 100%;  
+            z-index: -1;  
+            overflow: hidden;  
+        }  
+
+        .particle {  
+            position: absolute;  
+            border-radius: 50%;  
+            background: rgba(255, 255, 255, 0.5);  
+            pointer-events: none;  
+            z-index: -1;  
+        }  
+
+        /* Animation Effects */  
+        @keyframes float {  
+            0% {  
+                transform: translateY(0) rotate(0deg);  
+            }  
+            50% {  
+                transform: translateY(-20px) rotate(180deg);  
+            }  
+            100% {  
+                transform: translateY(0) rotate(360deg);  
+            }  
+        }  
+
+        /* Pulse animation for verified badge */  
+        @keyframes pulse {  
+            0% {  
+                transform: scale(1);  
+            }  
+            50% {  
+                transform: scale(1.2);  
+            }  
+            100% {  
+                transform: scale(1);  
+            }  
+        }
+        
+        @keyframes fall {
+    0% {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+        .verified-badge i {  
+            animation: pulse 2s infinite;  
+        }  
+
+        /* Dark mode toggle */  
+        .theme-toggle {  
+            position: absolute;  
+            top: 20px;  
+            right: 20px;  
+            background: white;  
+            border-radius: 50%;  
+            width: 40px;  
+            height: 40px;  
+            display: flex;  
+            align-items: center;  
+            justify-content: center;  
+            cursor: pointer;  
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  
+            z-index: 10;  
+            transition: all 0.3s ease;  
+        }  
+
+        .theme-toggle:hover {  
+            transform: rotate(30deg);  
+        }  
+
+        .theme-toggle i {  
+            font-size: 20px;  
+            color: var(--primary);  
+        }  
+
+        /* Dark mode styles */  
+        body.dark-mode {  
+            --text: #e0e0e0;  
+            --background: rgba(30, 30, 40, 0.85);  
+        }  
+
+        body.dark-mode .link {  
+            background: #2a2a35;  
+            color: #e0e0e0;  
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);  
+        }  
+
+        body.dark-mode .social-icon {  
+            background: #2a2a35;  
+            color: var(--primary);  
+        }  
+
+        body.dark-mode .theme-toggle {  
+            background: #2a2a35;  
+        }  
+
+        body.dark-mode .theme-toggle i {  
+            color: #e0e0e0;  
+        }  
+        
+        
